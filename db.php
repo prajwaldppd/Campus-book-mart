@@ -1,5 +1,4 @@
 
-
 <?php
 
 $dbHost = 'online-shopping-system-db-1';            // This corresponds to MYSQL_HOST
