@@ -1,0 +1,61 @@
+# version: "3"
+# services:
+#   db:
+#     image: mysql:latest
+#     environment:
+#       - MYSQL_DATABASE=onlineshop
+#       - MYSQL_USER=php_docker
+#       - MYSQL_PASSWORD=password # this should live in a env var
+#       - MYSQL_ALLOW_EMPTY_PASSWORD=1 # equivalent to True
+#     volumes:
+#       - "./db:/docker-entrypoint-initdb.d" # this is how we persist a sql db even when container stops
+#   www:
+#     image: php:apache
+#     volumes:
+#       - "./:/var/www/html" # sync the current dir on local machine to the dir of container
+#     ports:
+#       - 80:80
+#       - 443:443 # for future ssl traffic
+#   phpmyadmin:
+#     image: phpmyadmin/phpmyadmin
+#     ports:
+#       - 8001:80
+#     environment:
+#       - PMA_HOST=db
+#       - PMA_PORT=3306
+
+version: "3"
+services:
+  www:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      mysqli_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "onlineshop"
+      MYSQL_USER: "php_docker"
+      MYSQL_PASSWORD: "password"
+    volumes:
+      - "./database/onlineshop.sql:/docker-entrypoint-initdb.d/onlineshop.sql"
+
+  # www:
+  #   image: php:apache
+  #   volumes:
+  #     - "./:/var/www/html" # Adjust the path to match your project structure
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8001:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
