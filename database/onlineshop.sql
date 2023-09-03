@@ -12,10 +12,6 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `onlineshop`
@@ -107,7 +103,6 @@ INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`) VALUES
 (53, 2, '::1', 14, 1),
 (55, 5, '::1', 14, 1),
 (56, 1, '::1', 9, 1),
-(57, 2, '::1', 9, 1),
 (71, 61, '127.0.0.1', -1, 1),
 (148, 8, '::1', 26, 1),
 (149, 9, '::1', 26, 1);
@@ -123,9 +118,7 @@ CREATE TABLE `categories` (
   `cat_title` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `categories`
---
+
 
 INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 (1, 'Books\r\n'),
@@ -150,7 +143,6 @@ CREATE TABLE `email_info` (
 
 INSERT INTO `email_info` (`email_id`, `email`) VALUES
 (3, 'admin@gmail.com'),
-(4, 'prajwal.cs21@bmsce.ac.in'),
 (5, 'prajwal.cs21@bmsce.ac.in');
 
 -- --------------------------------------------------------
