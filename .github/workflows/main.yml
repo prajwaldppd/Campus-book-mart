@@ -20,4 +20,4 @@ jobs:
         with:
           context: DockerFileFolder/
           push: true
-          tags: poojashreekvblr/sample:latest
+          tags: prajwaldhage16/online-shopping-system:latest
