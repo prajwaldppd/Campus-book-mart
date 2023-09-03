@@ -61,7 +61,7 @@ body {
   background-image: linear-gradient(
     -134deg,
     #ffa62e 0%,
-    #fb962e 20%,
+    #fb962e 25%,
     #f8852e 40%,
     #f3742d 60%,
     #ef612d 80%,
@@ -81,7 +81,7 @@ h6 {
 }
 
 a {
-  color: #2b2d42;
+    color: #2b2d42;
   font-weight: 500;
   -webkit-transition: 0.2s color;
   transition: 0.2s color;
@@ -110,7 +110,7 @@ ol {
   padding: 12px 30px;
   background-color: #d10024;
   border: none;
-  border-radius: 40px;
+  border-radius: 30px;
   color: #fff;
   text-transform: uppercase;
   font-weight: 700;
@@ -135,13 +135,13 @@ ol {
   overflow: hidden;
 }
 .p-r-55 {
-  padding-right: 55px;
+  padding-right: 50px;
 }
 .p-l-55 {
-  padding-left: 55px;
+  padding-left: 50px;
 }
 .p-b-54 {
-  padding-bottom: 54px;
+  padding-bottom: 50px;
 }
 .p-t-65 {
   padding-top: 65px;
@@ -152,7 +152,7 @@ ol {
 .login100-form-title {
   display: block;
   font-family: Poppins-Bold;
-  font-size: 39px;
+  font-size: 40px;
   color: #333333;
   line-height: 1.2;
   text-align: center;
