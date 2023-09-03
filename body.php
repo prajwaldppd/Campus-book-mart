@@ -5,7 +5,6 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
    
-
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
 
