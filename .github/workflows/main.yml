@@ -1,65 +1,23 @@
-name: PHP CI/CD with XAMPP, MySQL, and Docker
+name: Build and Push Docker image to Docker Hub
 
-on:
-  push:
-    branches:['master']
-
+on: push
 jobs:
-  build:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up XAMPP
-      run: |
-        # Download and install XAMPP
-        wget https://www.apachefriends.org/xampp-files/7.4.22/xampp-linux-x64-7.4.22-0-installer.run
-        chmod +x xampp-linux-x64-7.4.22-0-installer.run
-        sudo ./xampp-linux-x64-7.4.22-0-installer.run
-
-        # Start XAMPP services
-        sudo /opt/lampp/lampp start
-
-    - name: Install PHP dependencies
-      run: |
-        cd path/to/your/php/project
-        composer install # Use composer to install PHP dependencies
-
-    - name: Set up MySQL
-      run: |
-        # Create MySQL database and user
-        mysql -u root -e "CREATE DATABASE your_database;"
-        mysql -u root -e "CREATE USER 'your_user'@'localhost' IDENTIFIED BY 'your_password';"
-        mysql -u root -e "GRANT ALL PRIVILEGES ON your_database.* TO 'your_user'@'localhost';"
-        mysql -u root -e "FLUSH PRIVILEGES;"
-
-    - name: Run PHP tests
-      run: |
-        cd path/to/your/php/project
-        phpunit # Run your PHP unit tests
-
-    - name: Stop XAMPP
-      run: |
-        sudo /opt/lampp/lampp stop
-
-    - name: Build Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: path/to/your/php/project
-        push: true
-        tags: your-docker-hub-username/your-php-app:latest
-        build-args: |
-          ARG1=value1
-          ARG2=value2
-          # Add any build arguments needed for your Docker image
-        
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
     
-    - name: Push Docker image to Docker Hub
-      run: docker push your-docker-hub-username/your-php-app:latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: DockerFileFolder/
+          push: true
+          tags: poojashreekvblr/sample:latest
